@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Login</h1>
+    <form id="login-form">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <button type="submit">Login</button>
+    </form>
+    <p id="message"></p>
+
+    <br><br><br>
+    <h1>reg</h1>
+    <form id="reg-form" method="POST">
+        <label for="email">Email:</label>
+        <input type="email" id="emailreg" name="email" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="passwordreg" name="password" required>
+        <br>
+        <label for="password">name:</label>
+        <input type="password" id="name" name="password" required>
+        <br>
+        <label for="password">surname:</label>
+        <input type="password" id="surname" name="password" required>
+        <br>
+        <button type="submit">reg</button>
+    </form>
+    <p id="messagereg"></p>
+
+    <script>
+        $(document).ready(function () {
+            $('#login-form').on('submit', function (e) {
+                e.preventDefault();
+                const email = $('#email').val();
+                const password = $('#password').val();
+
+                $.ajax({
+                    url: '{% url "login" %}',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ email: email, password: password }),
+                    success: function (response) {
+                        $('#message').text(response.message);
+                    },
+                    error: function (xhr) {
+                        const response = JSON.parse(xhr.responseText);
+                        $('#message').text(response.message);
+                    }
+                });
+            });
+        });
+
+        $(document).ready(function () {
+            $('#reg-form').on('submit', function (e) {
+                e.preventDefault();
+                const email = $('#emailreg').val();
+                const password = $('#passwordreg').val();
+                const name = $('#name').val();
+                const surname = $('#surname').val();
+
+                $.ajax({
+                    url: '{% url "register" %}',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ email: email, password: password, first_name: name, last_name: surname}), 
+                    success: function (response) {
+                        $('#messagereg').text(response.message);
+                    },
+                    error: function (xhr) {
+                        const response = JSON.parse(xhr.responseText);
+                        $('#messagereg').text(response.message);
+                    },
+                });
+            });
+        });
+    </script>
+</body>
+</html>
