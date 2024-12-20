@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+{% load static %}
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -38,6 +39,95 @@
     </form>
     <p id="messagereg"></p>
 
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация и Авторизация</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/reg.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+</head>
+<body>
+    <header>
+        <!-- мини-навигация-->
+        <div class="header">
+          <section class="header__logo"><a href='{% url "admin-main" %}'> <img src="{% static 'img/logo_transparent_white.svg' %}" alt=""></a></section>
+          <nav class="header__menu">
+            <div class="burger-button header__menu_button">
+                <span class="burger-top burger"></span>
+                <span class="burger-middle burger"></span>
+                <span class="burger-bottom burger"></span>
+            </div>
+            <div class="burger-menu">
+                <a class="check" href="user.html">Войти</a>
+                <a class="check" href="#Catalog">Главная</a>
+                <a class="check" href="#Catalog">О пряниках</a>
+                <a class="check" href="#Catalog">Немного истории</a>
+                <a class="check" href="#Catalog">Галерея мероприятий</a>
+                <a class="check" href="#Catalog">Каталог</a>
+                <a class="check" href="#Catalog">Конструктор</a>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+    <!-- Основной блок регистрации/авторизации -->
+    <main>
+        <section class="auth">
+            <div class="container auth-container">
+                <div class="form-wrapper" id="login-form">
+                    <h1>Авторизация</h1>
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="login-email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Введите ваш email">
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Пароль</label>
+                            <input type="password" id="password" name="password" placeholder="Введите ваш пароль">
+                        </div>
+                        <button type="submit" class="auth-button">Войти</button>
+                    </form>
+                    <p id="message"></p>
+                    <p class="form-footer">Нет аккаунта? <a href="#" onclick="showForm('register')">Зарегистрируйтесь</a></p>
+                </div>
+                
+                <!-- Форма регистрации -->
+                <div class="form-wrapper hidden" id="register-form">
+                    <h1>Регистрация</h1>
+                    <form id="reg-form" method="POST">
+                        <div class="form-group">
+                            <label for="register-username">Имя пользователя</label>
+                            <input type="text" id="name" name="register-username" placeholder="Введите ваше имя">
+                        </div>
+                        <div class="form-group">
+                            <label for="register-email">Email</label>
+                            <input type="email" id="emailreg" name="register-email" placeholder="Введите ваш email">
+                        </div>
+                        <div class="form-group">
+                            <label for="register-password">Пароль</label>
+                            <input type="password" id="passwordreg" name="register-password" placeholder="Введите ваш пароль">
+                        </div>
+                        <button type="submit" class="auth-button">Зарегистрироваться</button>
+                    </form>
+                    <p class="form-footer">Уже есть аккаунт? <a href="#" onclick="showForm('login')">Войдите</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-container">
+            <p>ГорПО &laquo;Урал&raquo; (г.Шадринск)</p>
+        </div>
+    </footer>
     <script>
         $(document).ready(function () {
             $('#login-form').on('submit', function (e) {
@@ -84,6 +174,25 @@
                 });
             });
         });
+    </script>
+    <script>
+        function showForm(formType) {
+            const loginForm = document.getElementById('login-form');
+            const registerForm = document.getElementById('register-form');
+            const buttons = document.querySelectorAll('.tab-button');
+        
+            if (formType === 'login') {
+                loginForm.classList.remove('hidden');
+                registerForm.classList.add('hidden');
+                buttons[0].classList.add('active');
+                buttons[1].classList.remove('active');
+            } else {
+                registerForm.classList.remove('hidden');
+                loginForm.classList.add('hidden');
+                buttons[1].classList.add('active');
+                buttons[0].classList.remove('active');
+            }
+        }
     </script>
 </body>
 </html>
