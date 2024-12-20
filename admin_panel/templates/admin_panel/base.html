@@ -18,10 +18,10 @@
     <script src="{% static 'js/main.js' %}" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
     <!-- FAVICON-->
-    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
-    <link rel="manifest" href="img/favicon/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'img/favicon/site.webmanifest' %}">
 
     <style>
       .object {
@@ -40,44 +40,8 @@
 }
     </style>
   </head>
-  <body>
-    <div class="wraper" id="app">
-        <header>
-            <!-- мини-навигация-->
-            <div class="header">
-              <section class="header__logo"><a href="index.php"> <img src="{% static 'img/photo.jpg' %}img/logo_transparent_white.svg" alt=""></a></section>
-              <nav class="header__menu">
-                <div class="burger-button header__menu_button">
-                    <span class="burger-top burger"></span>
-                    <span class="burger-middle burger"></span>
-                    <span class="burger-bottom burger"></span>
-                </div>
-                <div class="burger-menu">
-                    <a class="check" href="user.html">
-                        {% if user.is_authenticated %}
-                        {{ user.first_name }}
-                        <a href="{% url 'logout' %}" id="logout-link">Выйти</a>
-                        {% else %}
-                        <a href="{% url 'admin-login' %}">Войти</a>
-                        {% endif %}
-                    </a>
-                    <a class="check" href="#Catalog">Главная</a>
-                    <a class="check" href="#Catalog">О пряниках</a>
-                    <a class="check" href="#Catalog">Немного истории</a>
-                    <a class="check" href="#Catalog">Галерея мероприятий</a>
-                    <a class="check" href="#Catalog">Каталог</a>
-                    <a class="check" href="#Catalog">Конструктор</a>
-                </div>
-              </nav>
-            </div>
-            <!-- основной большой блок-->
-            <div class="main">
-              <article class="main__title">
-                <h3>Шадринские пряники</h3>
-              </article>
-              <h2>Лакомство с Русской душой!</h2><a href="#map">Каталог</a>
-            </div>
-          </header>
+  {% include 'admin_panel/headers.html' %}
+  
     <main>
         {% block content %}
         {% endblock %}
@@ -109,7 +73,7 @@
       </footer>
       
     </div> 
-    <script src="script-2.js"></script> 
+    <script src="{% static 'js/script-2.js' %}"></script> 
     <noscript>
       Включите пожалуйста JavaScript( JS ) в настройках, 
       иначе данный сайт будет некорректно работать

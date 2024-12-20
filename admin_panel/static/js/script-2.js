@@ -77,6 +77,11 @@ function addToCart(product, quantity, price, additionalDetails = {}) {
 }
 
     // Функция для обновления сообщения о количестве товаров в корзине
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.product').forEach(product => {
+            product.style.height = `${product.scrollHeight}px`;
+        });
+    });
     function updateCartMessage(productContainer, productName, quantity) {
         let messageElement = productContainer.querySelector('.add-to-cart-message');
         if (!messageElement) {
@@ -86,12 +91,18 @@ function addToCart(product, quantity, price, additionalDetails = {}) {
             productContainer.appendChild(messageElement);
             messageElement.dataset.totalQuantity = 0; // Инициализация общего количества
         }
-
+    
         const currentQuantity = parseInt(messageElement.dataset.totalQuantity) || 0;
         const newQuantity = currentQuantity + quantity;
         messageElement.dataset.totalQuantity = newQuantity;
-
+    
         messageElement.textContent = `${productName} (${newQuantity} шт.) добавлен(ы) в корзину.`;
+    
+        // Плавно показываем сообщение
+        messageElement.classList.add('show');
+    
+        // Увеличиваем высоту родительского контейнера
+        productContainer.style.height = `${productContainer.scrollHeight}px`;
     }
 
     // Обработка кнопок добавления в корзину
@@ -138,7 +149,7 @@ function addToCart(product, quantity, price, additionalDetails = {}) {
 
                 const productNameDetails = `Пряник (${size}, ${flavor}, ${packaging}, ${type}, ${imprint})`;
                 addToCart(productNameDetails, 1, price, { size, flavor, packaging, type, imprint });
-                alert(`${productNameDetails} добавлен(ы) в корзину.`);
+                updateCartMessage(productContainer, productNameDetails, 1);
             } else {
                 // Логика для каталога
                 const quantityInput = productContainer.querySelector('.product-quantity');

@@ -11,10 +11,10 @@ import json
 class UserRegistrationView(View):
     def post(self, request, format=None, *args, **kwargs):
         serializer = UserRegistrationsSerializer(data=json.loads(request.body.decode('utf-8')))
-        print(serializer)
         if serializer.is_valid():
             serializer.save()
             return JsonResponse({'status': 'success', 'message': 'Вы успешно зарегались в систему'}, status=200)
+        
         return JsonResponse({'status': 'error', 'message': 'Неверные учетные данные'}, status=401)
              
 

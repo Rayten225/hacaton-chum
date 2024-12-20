@@ -55,28 +55,35 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 </head>
 <body>
-    <header>
-        <!-- мини-навигация-->
-        <div class="header">
-          <section class="header__logo"><a href='{% url "admin-main" %}'> <img src="{% static 'img/logo_transparent_white.svg' %}" alt=""></a></section>
-          <nav class="header__menu">
-            <div class="burger-button header__menu_button">
-                <span class="burger-top burger"></span>
-                <span class="burger-middle burger"></span>
-                <span class="burger-bottom burger"></span>
+    <div class="wraper" id="app">
+        <header>
+            <!-- мини-навигация-->
+            <div class="header">
+              <section class="header__logo"><a href="{% url 'admin-main' %}"> <img src="{% static 'img/logo_transparent_white.svg' %}" alt=""></a></section>
+              <nav class="header__menu">
+                <div class="burger-button header__menu_button">
+                    <span class="burger-top burger"></span>
+                    <span class="burger-middle burger"></span>
+                    <span class="burger-bottom burger"></span>
+                </div>
+                <div class="burger-menu">
+                    <a class="check" href="{% url 'account' %}">
+                        {% if user.is_authenticated %}
+                        {{ user.first_name }}
+                        <a href="{% url 'logout' %}" id="logout-link">Выйти</a>
+                        {% else %}
+                        <a href="{% url 'admin-login' %}">Войти</a>
+                        {% endif %}
+                    </a>
+                    <a class="check" href="#Catalog">Главная</a>
+                    <a class="check" href="#Catalog">О пряниках</a>
+                    <a class="check" href="#Catalog">Немного истории</a>
+                    <a class="check" href="#Catalog">Галерея мероприятий</a>
+                    <a class="check" href="#Catalog">Каталог</a>
+                    <a class="check" href="#Catalog">Конструктор</a>
+                </div>
+              </nav>
             </div>
-            <div class="burger-menu">
-                <a class="check" href="user.html">Войти</a>
-                <a class="check" href="#Catalog">Главная</a>
-                <a class="check" href="#Catalog">О пряниках</a>
-                <a class="check" href="#Catalog">Немного истории</a>
-                <a class="check" href="#Catalog">Галерея мероприятий</a>
-                <a class="check" href="#Catalog">Каталог</a>
-                <a class="check" href="#Catalog">Конструктор</a>
-            </div>
-          </nav>
-        </div>
-      </header>
 
     <!-- Основной блок регистрации/авторизации -->
     <main>
@@ -102,20 +109,29 @@
                 <!-- Форма регистрации -->
                 <div class="form-wrapper hidden" id="register-form">
                     <h1>Регистрация</h1>
-                    <form id="reg-form" method="POST">
+                    <form id="reg-form" method="POST" class="auth-form">
                         <div class="form-group">
-                            <label for="register-username">Имя пользователя</label>
-                            <input type="text" id="name" name="register-username" placeholder="Введите ваше имя">
+                            <label for="register-username">Имя</label>
+                            <input type="text" id="name" name="name" placeholder="Введите ваше имя">
+                        </div>
+                        <div class="form-group">
+                            <label for="register-uservorname">Фамилия</label>
+                            <input type="text" id="surname" name="surname" placeholder="Введите вашу фамилию">
+                        </div>
+                        <div class="form-group">
+                            <label for="register-number">Номер телефона</label>
+                            <input type="tel" id="number" name="number" placeholder="+7 (___) ___-__-__">
                         </div>
                         <div class="form-group">
                             <label for="register-email">Email</label>
-                            <input type="email" id="emailreg" name="register-email" placeholder="Введите ваш email">
+                            <input type="email" id="emailreg" name="emailreg" placeholder="Введите ваш email">
                         </div>
                         <div class="form-group">
                             <label for="register-password">Пароль</label>
-                            <input type="password" id="passwordreg" name="register-password" placeholder="Введите ваш пароль">
+                            <input type="password" id="passwordreg" name="passwordreg" placeholder="Введите ваш пароль">
                         </div>
                         <button type="submit" class="auth-button">Зарегистрироваться</button>
+                        <p id="messagereg"></p>
                     </form>
                     <p class="form-footer">Уже есть аккаунт? <a href="#" onclick="showForm('login')">Войдите</a></p>
                 </div>
@@ -141,7 +157,7 @@
                     contentType: 'application/json',
                     data: JSON.stringify({ email: email, password: password }),
                     success: function (response) {
-                        $('#message').text(response.message);
+                        window.location.href = '{% url "admin-main" %}';
                     },
                     error: function (xhr) {
                         const response = JSON.parse(xhr.responseText);
@@ -158,12 +174,13 @@
                 const password = $('#passwordreg').val();
                 const name = $('#name').val();
                 const surname = $('#surname').val();
+                const number = $('#number').val();
 
                 $.ajax({
                     url: '{% url "register" %}',
                     type: 'POST',
                     contentType: 'application/json',
-                    data: JSON.stringify({ email: email, password: password, first_name: name, last_name: surname}), 
+                    data: JSON.stringify({ email: email, password: password, first_name: name, last_name: surname, number: number}), 
                     success: function (response) {
                         $('#messagereg').text(response.message);
                     },

@@ -1,0 +1,37 @@
+{% load static %}
+    <div class="wraper" id="app">
+        <header>
+            <!-- мини-навигация-->
+            <div class="header">
+              <section class="header__logo"><a href="{% url 'admin-main' %}"> <img src="{% static 'img/logo_transparent_white.svg' %}" alt=""></a></section>
+              <nav class="header__menu">
+                <div class="burger-button header__menu_button">
+                    <span class="burger-top burger"></span>
+                    <span class="burger-middle burger"></span>
+                    <span class="burger-bottom burger"></span>
+                </div>
+                <div class="burger-menu">
+                  {% if user.is_authenticated %}
+                    <a class="check" href="{% url 'account' %}">{{ user.first_name }}</a>
+                        <a href="{% url 'logout' %}" id="logout-link">Выйти</a>
+                        {% else %}
+                        <a href="{% url 'admin-login' %}">Войти</a>
+                        {% endif %}
+                   
+                    <a class="check" href="#Catalog">Главная</a>
+                    <a class="check" href="#Catalog">О пряниках</a>
+                    <a class="check" href="#Catalog">Немного истории</a>
+                    <a class="check" href="#Catalog">Галерея мероприятий</a>
+                    <a class="check" href="#Catalog">Каталог</a>
+                    <a class="check" href="#Catalog">Конструктор</a>
+                </div>
+              </nav>
+            </div>
+            <!-- основной большой блок-->
+            <div class="main">
+              <article class="main__title">
+                <h3>Шадринские пряники</h3>
+              </article>
+              <h2>Лакомство с Русской душой!</h2><a href="#map">Каталог</a>
+            </div>
+          </header>

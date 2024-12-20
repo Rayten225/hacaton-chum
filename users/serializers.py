@@ -47,7 +47,6 @@ class UserRegistrationsSerializer(serializers.ModelSerializer):
             to=[user.email]
         ).send()
         return user
-
     def validate(self, data):
         custom_validate_register(data)
         return data

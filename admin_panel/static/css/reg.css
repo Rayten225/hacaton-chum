@@ -1,4 +1,7 @@
 /* Основной блок регистрации/авторизации */
+body{
+    background-color: #FCEADD;
+}
 .auth {
     
     margin: 100px 0px;

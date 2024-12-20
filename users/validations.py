@@ -28,9 +28,8 @@ def custom_validate_last_name(last_name):
     return last_name
 
 def custom_validate_number(number):
-    print(123)
-    if not range(100000000000, 99999999999):
-        print(123)
+    if int(number) not in range(10000000000, 99999999999):
+        print(1)
         raise serializers.ValidationError({'number': 'Телефон должнен содержать только цифры.'})
     return number
 
@@ -59,10 +58,9 @@ def custom_validate_register(data):
     custom_validate_first_name(first_name)
 
     number = data.get('number')
-    print(123)
     if number:
         custom_validate_number(number)
-
+    print(data)
 # Валидация токенов
 def custom_validate_token(data, url):
     custom_validate_email_token_url(url)

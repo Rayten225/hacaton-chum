@@ -11,12 +11,31 @@ class Order(models.Model):
     )  
   
     order=models.TextField(  
-        verbose_name="Заказ клиента",
+        verbose_name=("Заказ клиента"),
         max_length=9999, 
     )
 
+    deadline=models.CharField(  
+        verbose_name=("Дата доставки"),
+        max_length=10,
+    )
+    organization=models.CharField(  
+        verbose_name=("Название организации"), 
+        max_length=100,
+    )
+    
     price=models.IntegerField(  
-        verbose_name="Итоговая сумма"  
+        verbose_name=("Итоговая сумма"),
+    )
+
+    address=models.CharField(  
+        verbose_name=("Адрес доставки"),
+        max_length=100,
+    )
+
+    email=models.CharField(  
+        verbose_name=("Почта клиента"),
+        max_length=100,
     )
 
     class Meta:  

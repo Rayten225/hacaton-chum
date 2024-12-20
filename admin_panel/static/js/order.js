@@ -74,24 +74,38 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         const orderDetails = {
-            products: cart,
-            totalPrice: totalPriceInput.value,
+            order: JSON.stringify(cart),
+            price: totalPriceInput.value,
             deadline: document.getElementById('deadline').value,
             organization: document.getElementById('organization').value,
-            contactName: document.getElementById('contact-name').value,
-            phone: document.getElementById('phone').value,
+            FIO: document.getElementById('contact-name').value,
+            number: document.getElementById('phone').value,
             address: document.getElementById('address').value,
             email: document.getElementById('email').value,
         };
 
         // Сохраняем заказ в историю
-        const orderHistory = JSON.parse(localStorage.getItem('orderHistory')) || [];
-        orderHistory.push({
-            products: cart,
-            totalPrice: totalPriceInput.value,
-            date: new Date().toLocaleString(),
-        });
-        localStorage.setItem('orderHistory', JSON.stringify(orderHistory));
+        // const orderHistory = JSON.parse(localStorage.getItem('orderHistory')) || [];
+        // orderHistory.push({
+        //     products: cart,
+        //     totalPrice: totalPriceInput.value,
+        //     date: new Date().toLocaleString(),
+        // });
+        // localStorage.setItem('orderHistory', JSON.stringify(orderHistory));
+
+                // $.ajax({
+                //     url: '/api/orders',
+                //     type: 'POST',
+                //     contentType: 'application/json',
+                //     data: JSON.stringify({order: order, price: price, deadline: deadline, organization: organization, FIO: FIO, number: number, address: address, email: email}), 
+                //     success: function (response) {
+                //         $('#order').text(response.message);
+                //     },
+                //     error: function (xhr) {
+                //         const response = JSON.parse(xhr.responseText);
+                //         $('#order').text(response.message);
+                //     }
+                // });
 
         // Очищаем корзину
         alert('Ваш заказ успешно оформлен!');

@@ -1,0 +1,139 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/user.css' %}">
+    <script src="{% static 'js/main.js' %}" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <!-- мини-навигация-->
+        <div class="header">
+          <section class="header__logo"><a href="{% url 'admin-main' %}"> <img src="{% static 'img/logo_transparent_white.svg' %}" alt=""></a></section>
+          <nav class="header__menu">
+            <div class="burger-button header__menu_button">
+                <span class="burger-top burger"></span>
+                <span class="burger-middle burger"></span>
+                <span class="burger-bottom burger"></span>
+            </div>
+            <div class="burger-menu">
+                <a class="check" href="{% url 'account' %}">
+                    {% if user.is_authenticated %}
+                    {{ user.first_name }}
+                    <a href="{% url 'logout' %}" id="logout-link">Выйти</a>
+                    {% else %}
+                    <a href="{% url 'admin-login' %}">Войти</a>
+                    {% endif %}
+                </a>
+                <a class="check" href="#Catalog">Главная</a>
+                <a class="check" href="#Catalog">О пряниках</a>
+                <a class="check" href="#Catalog">Немного истории</a>
+                <a class="check" href="#Catalog">Галерея мероприятий</a>
+                <a class="check" href="#Catalog">Каталог</a>
+                <a class="check" href="#Catalog">Конструктор</a>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+    <main>
+        <section class="profile-container">
+            <h1 class="profile-header">Личный кабинет</h1>
+
+            <div class="profile-info">
+                <p><strong>ФИ:</strong> <span id="user-name">{{user.first_name}} {{user.last_name}}</span></p>
+                <p><strong>Email:</strong> <span id="user-email">{{user.email}}</span></p>
+            </div>
+
+        </section>
+
+        <section class="order-form-container">
+            <h1>Оформление заказа</h1>
+
+            <form class="order-form">
+                <!-- Выбранные продукты -->
+                <div class="form-group">
+                    <label for="products">Выбранные продукты:</label>
+                    <textarea id="products" name="products" rows="5" readonly></textarea>
+                </div>
+
+                <!-- Итоговая сумма -->
+                <div class="form-group">
+                    <label for="total-price">Итоговая сумма:</label>
+                    <input type="text" id="total-price" name="total-price" readonly>
+                </div>
+
+                <!-- Срок изготовления -->
+                <div class="form-group">
+                    <label for="deadline">Срок изготовления:</label>
+                    <input type="date" id="deadline" name="deadline" required>
+                </div>
+
+                <!-- Контактная информация -->
+                <h2>Контактная информация</h2>
+                <div class="form-group">
+                    <label for="organization">Название организации (если есть):</label>
+                    <input type="text" id="organization" name="organization">
+                </div>
+
+                <div class="form-group">
+                    <label for="contact-name">  Фамилия и имя контактного лица:</label>
+                    <input type="text" id="contact-name" value="{{user.first_name}} {{user.last_name}}" name="contact-name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Телефон:</label>
+                    <input type="tel" id="phone" value="{{user.number}}" name="phone" placeholder="8 (___) ___-__-__" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Адрес для доставки:</label>
+                    <textarea id="address" name="address" rows="3" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" value="{{user.email}}" name="email" required>
+                </div>
+
+                <!-- Кнопка отправки -->
+                <button type="submit" class="submit-btn">Отправить заказ</button>
+                <p id="order"></p>
+            </form>
+        </section>
+    </main>
+
+    <script src="{% static 'js/order.js' %}"></script>
+    <script>
+        document.querySelector('#logout-link')?.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            fetch('{% url "logout" %}', {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken'),
+                },
+            }).then(response => response.json())
+              .then(data => {
+                  if (data.status === 'success') {
+                      window.location.href = '{% url "admin-login" %}';
+                  } else {
+                      alert('Ошибка при выходе.');
+                  }
+              });
+        });
+
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+    </script>
+</body>
+</html>
