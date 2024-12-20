@@ -27,10 +27,12 @@ def custom_validate_last_name(last_name):
         raise serializers.ValidationError({'last_name': 'Фамилия должна содержать только буквы.'})
     return last_name
 
-def custom_validate_patronymic(patronymic):
-    if not re.match(r"^[а-яА-ЯёЁa-zA-Z]+$", patronymic):
-        raise serializers.ValidationError({'patronymic': 'Отчество должно содержать только буквы.'})
-    return patronymic
+def custom_validate_number(number):
+    print(123)
+    if not range(100000000000, 99999999999):
+        print(123)
+        raise serializers.ValidationError({'number': 'Телефон должнен содержать только цифры.'})
+    return number
 
 # Валидация регистрации
 def custom_validate_register(data):
@@ -56,9 +58,10 @@ def custom_validate_register(data):
         raise serializers.ValidationError({'first_name': 'Пожалуйста, заполните поле имени.'})
     custom_validate_first_name(first_name)
 
-    patronymic = data.get('patronymic')
-    if patronymic:
-        custom_validate_patronymic(patronymic)
+    number = data.get('number')
+    print(123)
+    if number:
+        custom_validate_number(number)
 
 # Валидация токенов
 def custom_validate_token(data, url):

@@ -11,13 +11,13 @@ from users.validations import custom_validate_register, custom_validate_token, c
 class UserCurrentSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['email', 'last_name', 'first_name', 'patronymic', 'password']
+        fields = ['email', 'last_name', 'first_name', 'number', 'password']
 
 
 class UserRegistrationsSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['email', 'password', 'last_name', 'first_name', 'patronymic', 'password']
+        fields = ['email', 'password', 'last_name', 'first_name', 'number']
         extra_kwargs = {
             "email": {
                 "error_messages": {"required": "Укажите ваш email.", "blank": "Пожалуйста, заполните поле почты."}},
@@ -27,6 +27,8 @@ class UserRegistrationsSerializer(serializers.ModelSerializer):
                 "error_messages": {"required": "Введите фамилию.", "blank": "Пожалуйста, заполните поле фамилии."}},
             "first_name": {
                 "error_messages": {"required": "Введите имя.", "blank": "Пожалуйста, заполните поле имени."}},
+            "number": {
+                "error_messages": {"required": "Введите телефон.", "blank": "Пожалуйста, заполните поле телефона."}},
         }
 
     def create(self, validated_data):
@@ -35,7 +37,7 @@ class UserRegistrationsSerializer(serializers.ModelSerializer):
             password=validated_data['password'],
             last_name=validated_data.get('last_name', ''),
             first_name=validated_data.get('first_name', ''),
-            patronymic=validated_data.get('patronymic', ''),
+            number=validated_data.get('number', ''),
             is_active=False
         )
         token = EmailVerify.objects.create(user=user)

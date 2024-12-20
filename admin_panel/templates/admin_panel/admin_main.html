@@ -1,7 +1,250 @@
 {% extends 'admin_panel/base.html' %}
-
-{% block title %}Главная страница{% endblock %}
+{% load static %}
+{% block title %}Шадринские пряники{% endblock %}
 
 {% block content %}
-    <h1>Hello world!</h1>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<main>
+    <!-- информация о проекте-->
+    <section class="info-project main__info">
+      <div class="container">
+        <div class="info-project__wraper">
+          <article class="info-project__text">
+            <h2 class="info-project__title" id="info-project">О пряниках</h2>
+            <p class="info-project__paragraph">
+              Более 20 лет ГорПО «Урал» бережно сохраняет и преумножает славу шадринского пряника. 
+              Отборная пшеничная и ржаная мука, натуральный пчелиный мед, патока, изюм, яблочное повидло, 
+              дикорастущие ягоды, жженка, корица – в пряничном деле важен каждый компонент. 
+              Придерживаясь традиционных рецептур и классических технологий, мы воссоздаем народное 
+              кулинарное наследие, передавая будущим поколениям возможность приобщиться 
+              к уникальным продуктам и естественным вкусам.
+            </p>
+            <p class="info-project__paragraph info-project__paragraph_grean-back-dark">
+              Натуральный состав, естественный вкус – любимое лакомство детей и взрослых!
+            </p>
+            <p class="info-project__paragraph">
+              Использование качественных натуральных ингредиентов – 
+              наша принципиальная позиция, и ее оценили покупатели, 
+              делающие сознательный выбор между «химией с долгосроками»
+              и по-настоящему вкусным, натуральным продуктом. 
+            </p>
+          </article>
+          <div class="info-project__img"> 
+            <img src="{% static 'img/pranik.jpg' %}" alt="человек">
+          </div>
+        </div>
+      </div>
+    </section> 
+<!-- информация о самом месте-->
+<section class="info-mesto main__info">
+  <article class="info-mesto__title">
+    <div class="container">
+      <div class="info-mesto__title-wraper">
+        <h2 id="info-mesto">Немного истории</h2>
+      </div>
+    </div>
+  </article>
+  <div class="container"> 
+    <div class="info-mesto__wraper">
+      <div class="info-mesto__block block block1">
+        <p>
+            Шадринские пряники стали символом Зауралья почти 200 лет назад. 
+            С Крестовско-Ивановской ярмарки их отправляли по Уралу и Сибири. 
+            Тесто делали из ржаной муки с медом, пряностями и фруктовыми начинками. 
+            В историческом центре Шадринска сохранилось здание «Кондитерской А.М. Анчугова», 
+            где в XIX веке выпускали около 20 сортов пряников.
+        </p>
+      </div>
+      <div class="info-mesto__block block block2">
+        <p>
+            Анчугов А.М. был одним из крупнейших производителей пряников, его дом сохранился до наших дней. 
+            В цокольном этаже находилась мастерская с большими столами, где для работы
+            с тестом требовалось четыре человека. 
+            Патоку для производства поставляли Юкляевских С.Т. и Татнев Д.А.
+        </p>
+      </div>
+      <div class="info-mesto__block block block4">
+        <p>
+            В обычные дни выпекали простые недорогие пряники, а к особым случаям — «подносные». 
+            Процесс их изготовления до 1917 года описан краеведом Зыряновым А.Н. 
+            в труде «Промыслы в Шадринском уезде Пермской губернии».
+        </p>
+      </div>
+      <div class="info-mesto__block block block5">
+        <p>
+            В Шадринске до 1917 года пряничным производством занимались Анчугов А.М., Галюков П.А., 
+            Кутузов А.И., Машуков А.О., Митрофанов Ф.Н., Сеначин М.А.  
+            
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- галерея-->
+<section class="galary main__galary">
+  <div class="container"> 
+    <div class="galary__wraper">
+      <article class="galary__title"> 
+        <h2 id="galary">Галерея Мероприятий</h2>
+      </article>
+      <swiper-container class="mySwiper galary__blocks" navigation="true" pagination="true" pagination-clickable="true" space-between="10" slides-per-view="2" pagination-type="none">
+        <swiper-slide><img src="img/1.jpg" alt="slide1"></swiper-slide>
+        <swiper-slide><img src="img/2.jpg" alt="slide2"></swiper-slide>
+        <swiper-slide><img src="img/3.jpg" alt="slide3"></swiper-slide>
+        <swiper-slide><img src="img/4.jpg" alt="slide4"></swiper-slide>
+        <swiper-slide><img src="img/5.jpg" alt="slide5"></swiper-slide>
+        <swiper-slide><img src="img/6.jpg" alt="slide6"></swiper-slide>
+        <swiper-slide><img src="img/7.jpg" alt="slide7"></swiper-slide>
+        <swiper-slide><img src="img/8.jpg" alt="slide8"></swiper-slide>
+        <swiper-slide><img src="img/9.jpg" alt="slide9"></swiper-slide>
+      </swiper-container>
+    </div>
+  </div>
+</section>
+<!-- карта-->
+<section class="catalog" id="Catalog">
+    <h2>Наши продукция</h2>
+    <div class="products-container">
+        <div class="product">
+            <img src="img/Catalog/brauny.jpg" alt="Брауни" class="product-img">
+            <div class="product-info">
+                <h3>Брауни</h3>
+                <p class="product-description">На сливочном масле</p>
+                <p class="product-price" data-price="100">Цена: 100₽</p>
+                <input type="number" class="product-quantity" min="1" value="1" placeholder="Количество">
+                <button class="add-to-cart-btn" data-product="Брауни">Добавить в корзину</button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="img/Catalog/imbirnoe.jpg" alt="Имбирное печенье" class="product-img">
+            <div class="product-info">
+                <h3>Имбирное печенье</h3>
+                <p class="product-description">На сливочном масле</p>
+                <p class="product-price" data-price="200">Цена: 200₽</p>
+                <input type="number" class="product-quantity" min="1" value="1" placeholder="Количество">
+                <button class="add-to-cart-btn" data-product="Имбирное печенье">Добавить в корзину</button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="img/Catalog/kurabye.jpg" alt="Курабье" class="product-img">
+            <div class="product-info">
+                <h3>Курабье</h3>
+                <p class="product-description">С начинкой яблочное повидло</p>
+                <p class="product-price" data-price="350">Цена: 350₽</p>
+                <input type="number" class="product-quantity" min="1" value="1" placeholder="Количество">
+                <button class="add-to-cart-btn" data-product="Курабье">Добавить в корзину</button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="img/Catalog/mozaika.jpg" alt="Мозаика" class="product-img">
+            <div class="product-info">
+                <h3>Мозаика</h3>
+                <p class="product-description">С начинкой фруктово-ягодный джем</p>
+                <p class="product-price" data-price="70">Цена: 70₽</p>
+                <input type="number" class="product-quantity" min="1" value="1" placeholder="Количество">
+                <button class="add-to-cart-btn" data-product="Мозаика">Добавить в корзину</button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="img/Catalog/ovsyanoe.jpg" alt="Овсяное печенье" class="product-img">
+            <div class="product-info">
+                <h3>Печенье овсяное</h3>
+                <p class="product-description">Классическое, с изюмом, с курагой, с повидлом</p>
+                <p class="product-price" data-price="150">Цена: 150₽</p>
+                <input type="number" class="product-quantity" min="1" value="1" placeholder="Количество">
+                <button class="add-to-cart-btn" data-product="Печенье овсяное">Добавить в корзину</button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="img/Catalog/ruletik.jpg" alt="Рулетик сливочный" class="product-img">
+            <div class="product-info">
+                <h3>Рулетик сливочный</h3>
+                <p class="product-description">С добавлением шоколада, миндаля, кунжута</p>
+                <p class="product-price" data-price="300">Цена: 300₽</p>
+                <input type="number" class="product-quantity" min="1" value="1" placeholder="Количество">
+                <button class="add-to-cart-btn" data-product="Рулетик">Добавить в корзину</button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="img/Catalog/ulitka.jpg" alt="Улитка" class="product-img">
+            <div class="product-info">
+                <h3>"Улитка"</h3>
+                <p class="product-description">Клубника, апельсин, лимон, яблоко</p>
+                <p class="product-price" data-price="250">Цена: 250₽</p>
+                <input type="number" class="product-quantity" min="1" value="1" placeholder="Количество">
+                <button class="add-to-cart-btn" data-product="Улитка">Добавить в корзину</button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="img/Catalog/shokoladnoye.JPG" alt="Шоколадное печенье" class="product-img">
+            <div class="product-info">
+                <h3>Шоколадное</h3>
+                <p class="product-description">На сливочном масле</p>
+                <p class="product-price" data-price="120">Цена: 120₽</p>
+                <input type="number" class="product-quantity" min="1" value="1" placeholder="Количество">
+                <button class="add-to-cart-btn" data-product="Шоколадное">Добавить в корзину</button>
+            </div>
+        </div>
+    </div>    
+</section>
+
+<section class="cookie-builder">
+    <div class="container">
+        <h2>Конструктор сувенирных пряников</h2>
+        <form class="cookie-form">
+
+            <!-- Выбор размера пряника -->
+            <div class="form-group">
+                <label for="size">Размер (вес):</label>
+                <select id="size" name="size">
+                    <option value="100g">100г</option>
+                    <option value="150g">150г</option>
+                    <option value="350g">350г</option>
+                    <option value="700g">700г</option>
+                    <option value="1000g">1000г</option>
+                </select>
+            </div>
+
+            <!-- Выбор вкуса пряника -->
+            <div class="form-group" id="flavor-group">
+                <label for="flavor">Вкус:</label>
+                <select id="flavor" name="flavor">
+                    <option value="Классический">Классический с яблочным повидлом</option>
+                    <option value="Черемуховый">Черемуховый (на черемуховой муке с черемуховой начинкой)</option>
+                    <option value="Черемуха-брусника">Черемуха-брусника (на черемуховой муке с брусничной начинкой)</option>
+                </select>
+            </div>
+
+            <!-- Выбор упаковки -->
+            <div class="form-group" id="packaging-group">
+                <label for="packaging">Упаковка:</label>
+                <select id="packaging" name="packaging">
+                    <option value="Обычная упаковка">Обычная упаковка</option>
+                    <option value="Сувенирная упаковка">Сувенирная коробка (для 1000г)</option>
+                </select>
+            </div>
+
+            <!-- Выбор типа пряника -->
+            <div class="form-group" id="type-group">
+                <label for="type">Тип пряника:</label>
+                <select id="type" name="type">
+                    <option value="Тиражный">Тиражный</option>
+                    <option value="Расписной">Расписной</option>
+                </select>
+            </div>
+
+            <!-- Выбор оттиска -->
+            <div class="form-group" id="imprint-group">
+                <label for="imprint">Выбор оттиска:</label>
+                <select id="imprint" name="imprint">
+                    <option value="Готовый вариант">Готовый вариант</option>
+
+                </select>
+            </div>
+
+            <button class="add-to-cart-btn" data-product="Конструктор пряников">Добавить в корзину</button>
+        </form>
+    </div>
+</section>
+</main>
 {% endblock %}

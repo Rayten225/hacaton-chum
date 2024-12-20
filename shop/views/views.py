@@ -8,5 +8,5 @@ class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     http_method_names = ['get', 'post' ,'head', 'options', 'list', 'delete'] 
     permission_classes = [permissions.IsAuthenticated] 
-    serializer_class = ProductCreationSerializer
+    serializer_class = ProductCreationSerializer    
     

@@ -1,0 +1,18 @@
+footer
+    .container 
+        .footer__wraper 
+            // контакты
+            section.footer__text 
+                .number 
+                    h4 Телефон: 8 (35253)33215
+                .email
+                    a(href="mailto:grad@shadrinsk-city.ru") Почта: grad@shadrinsk-city.ru
+                .op 
+                    h4 &copy; 2024 This Website. All rights reserves
+            // навигация по сайту
+            nav.footer__navigation 
+                ul 
+                    each text, href in {"#info-project": "О проекте", "#info-mesto": "Увалы", "#galary": "Галерея", "#map": "Карта местности"}
+                        li
+                            a(href=href) 
+                                | #{text}

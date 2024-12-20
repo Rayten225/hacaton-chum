@@ -1,0 +1,63 @@
+/* footer */
+footer{
+    background-image: url("../img/footer_fon.png");
+    background-size: cover;
+    height: 460px;
+    display: flex;
+    align-items: center;
+
+    .container .footer__wraper{
+        display: flex;
+        width:900px;
+        justify-content: space-between;
+        align-items: center;
+
+        .footer__text{
+            /* контакты */
+            color:#256037;
+            font-size: 24px;
+            display: flex;
+            flex-direction: column;
+            gap:20px;
+            
+            .op{
+                margin-top: 20px;
+                
+                h4{
+                    font-weight: 400;
+                }
+            }
+            .email a{
+                color:#256037;
+                font-size: 24px;
+                font-weight: 900;
+            }
+        }
+        .footer__navigation{
+            ul{
+                /* навигация по сайту */
+                display: flex;
+                flex-direction: column;
+                gap:20px;
+
+                a{
+                    color: #256037;
+                    font-size: 20px;
+
+                    &:hover{
+                        border-bottom: 1px solid #256037;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width:930px) {
+    footer{
+        .container .footer__wraper{
+            margin-top: 40px;
+            width: 100%;
+            gap:40px;
+        }
+    }
+}

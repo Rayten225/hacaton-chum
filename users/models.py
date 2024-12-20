@@ -97,7 +97,7 @@ class User(AbstractBaseUser, PermissionsMixin):
             'required': 'Пожалуйста, заполните поле фамилии.',
         }
     )
-    patronymic = models.CharField(verbose_name='Отчество', max_length=100, blank=True)
+    number = models.CharField(verbose_name='Номер телефона', max_length=100, blank=True)
     date_joined = models.DateTimeField(verbose_name='Дата создания аккаунта', default=timezone.now)
     is_staff = models.BooleanField(_('staff'), default=False)
     is_active = models.BooleanField(_('active'), default=True)

@@ -1,25 +1,119 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Приложение авторизации{% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    <!-- Навигация -->
-    <nav>
-        {% if user.is_authenticated %}
-            Добро пожаловать, {{ user.email }}!
-            <a href="{% url 'logout' %}" id="logout-link">Выйти</a>
-        {% else %}
-            <a href="{% url 'admin-login' %}">Войти</a>
-        {% endif %}
-    </nav>
+    <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Звездные увалы</title>
+    <!-- CSS-->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- JS-->
+    <script src="{% static 'js/main.js' %}" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+    <!-- FAVICON-->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="img/favicon/site.webmanifest">
 
+    <style>
+      .object {
+    position: relative; /* Необходимо для позиционирования псевдоэлемента */
+}
+
+.object.selected::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Черный полупрозрачный фон */
+    z-index: 1; /* Устанавливаем выше других элементов */
+}
+    </style>
+  </head>
+  <body>
+    <div class="wraper" id="app">
+        <header>
+            <!-- мини-навигация-->
+            <div class="header">
+              <section class="header__logo"><a href="index.php"> <img src="{% static 'img/photo.jpg' %}img/logo_transparent_white.svg" alt=""></a></section>
+              <nav class="header__menu">
+                <div class="burger-button header__menu_button">
+                    <span class="burger-top burger"></span>
+                    <span class="burger-middle burger"></span>
+                    <span class="burger-bottom burger"></span>
+                </div>
+                <div class="burger-menu">
+                    <a class="check" href="user.html">
+                        {% if user.is_authenticated %}
+                        {{ user.first_name }}
+                        <a href="{% url 'logout' %}" id="logout-link">Выйти</a>
+                        {% else %}
+                        <a href="{% url 'admin-login' %}">Войти</a>
+                        {% endif %}
+                    </a>
+                    <a class="check" href="#Catalog">Главная</a>
+                    <a class="check" href="#Catalog">О пряниках</a>
+                    <a class="check" href="#Catalog">Немного истории</a>
+                    <a class="check" href="#Catalog">Галерея мероприятий</a>
+                    <a class="check" href="#Catalog">Каталог</a>
+                    <a class="check" href="#Catalog">Конструктор</a>
+                </div>
+              </nav>
+            </div>
+            <!-- основной большой блок-->
+            <div class="main">
+              <article class="main__title">
+                <h3>Шадринские пряники</h3>
+              </article>
+              <h2>Лакомство с Русской душой!</h2><a href="#map">Каталог</a>
+            </div>
+          </header>
     <main>
         {% block content %}
-        1232
         {% endblock %}
     </main>
+
+
+    <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-left">
+            <p>Городское потребительское общество «УРАЛ»</p>
+            <p>Курганская обл., г. Шадринск,</p>
+            <p>ул. Февральская, 111</p>
+          </div>
+          <div class="footer-right">
+            <p>тел. 8(35253) 6-24-99</p>
+            <p>
+              <a href="mailto:gorpo@shadrinsk.net" class="footer-link">gorpo@shadrinsk.net</a>
+            </p>
+            <p>
+              <a href="https://vk.com/shadr_pryaniki" target="_blank" class="vk-link" aria-label="ВКонтакте">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 23.04C0 12.1788 0 6.74826 3.37413 3.37413C6.74826 0 12.1788 0 23.04 0H24.96C35.8212 0 41.2517 0 44.6259 3.37413C48 6.74826 48 12.1788 48 23.04V24.96C48 35.8212 48 41.2517 44.6259 44.6259C41.2517 48 35.8212 48 24.96 48H23.04C12.1788 48 6.74826 48 3.37413 44.6259C0 41.2517 0 35.8212 0 24.96V23.04Z" fill="#ffbd72"/>
+                  <path d="M25.54 34.5801C14.6 34.5801 8.3601 27.0801 8.1001 14.6001H13.5801C13.7601 23.7601 17.8 27.6401 21 28.4401V14.6001H26.1602V22.5001C29.3202 22.1601 32.6398 18.5601 33.7598 14.6001H38.9199C38.0599 19.4801 34.4599 23.0801 31.8999 24.5601C34.4599 25.7601 38.5601 28.9001 40.1201 34.5801H34.4399C33.2199 30.7801 30.1802 27.8401 26.1602 27.4401V34.5801H25.54Z" fill="white"/>
+                </svg>
+              </a>
+            </p>
+          </div>
+        </div>
+      </footer>
+      
+    </div> 
+    <script src="script-2.js"></script> 
+    <noscript>
+      Включите пожалуйста JavaScript( JS ) в настройках, 
+      иначе данный сайт будет некорректно работать
+    </noscript>
 
     <script>
         document.querySelector('#logout-link')?.addEventListener('click', function (e) {

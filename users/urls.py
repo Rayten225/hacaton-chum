@@ -8,7 +8,6 @@ from users.views.reset import ResetPasswordRequestView, ResetPasswordConfrimView
 
 router = routers.DefaultRouter()
 
-# router.register(r'register', UserRegistrationView, basename='register')
 router.register(r'reset/password', ResetPasswordRequestView, basename='reset-password-create')
 
 urlpatterns = [

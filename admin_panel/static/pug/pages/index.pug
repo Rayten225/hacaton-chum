@@ -1,0 +1,209 @@
+extends ../layouts/main-layout.pug
+
+block title
+    title
+        | Звездные увалы
+block css
+    link(rel="stylesheet", href="css/style.css")
+block content
+    main
+        // информация о проекте
+        section.info-project.main__info
+            .container
+                .info-project__wraper 
+                    article.info-project__text
+                        h2#info-project.info-project__title О проекте
+                        p.info-project__paragraph
+                            |Всероссийский конкурс 
+                            |лучших проектов создания
+                            | комфортной городской среды 
+                            |включен в федеральный проект 
+                            |«Формирование комфортной городской
+                            |среды» национального 
+                            |проекта «Жилье и городская среда».
+                        p.info-project__paragraph.info-project__paragraph_grean-back-dark 
+                            |Конкурс проводится по 
+                            |поручению Президента России с 2018 года.
+                        p.info-project__paragraph
+                            |В нем участвуют города 
+                            |с численностью населения 
+                            |до 200 тыс. человек, 
+                            |а также исторические поселения 
+                            |федерального и регионального значения.
+                    .info-project__img 
+                        img(src="img/man.svg", alt="человек")
+        // информация о самом месте
+        section.info-mesto.main__info
+            article.info-mesto__title
+                .container
+                    .info-mesto__title-wraper
+                        h2#info-mesto Увалы
+            .container 
+                .info-mesto__wraper
+                    .info-mesto__block.block.block1
+                        p 
+                            |Местная пресса 1900 года пишет 
+                            |о массовых лыжных прогулках на Тумановой горе
+                            |(неподалёку от Увал).
+                    .info-mesto__block.block.block2
+                        p 
+                            |Первые городские 
+                            |лыжные соревнования 
+                            |состоялись в 1925 году.
+                    .info-mesto__block.block.block3
+                        p 
+                            |В 1986 году на Увалах прошли 
+                            |Всероссийские соревнования 
+                            |на приз Т.С. Мальцева.
+                            |В них приняли участие 
+                            |спортсмены из 34 областей, 
+                            |в том числе и лыжники Шадринска.
+                            |С 1938 года на Увалах 
+                            |стали проводить массовые 
+                            |культурные мероприятия.
+                    .info-mesto__block.block.block4
+                        p 
+                            |Например, большую популярность 
+                            |среди горожан имели маёвки - гуляния, 
+                            |семейные и дружеские пикники, 
+                            |приуроченные ко встрече весны и Дню 
+                            |международной солидарности трудящихся.
+                    .info-mesto__block.block.block5
+                        p 
+                            |Команда проекта обратилась 
+                            |к жителям  города поделиться 
+                            |уникальными привычками и 
+                            |традициями,  культурными 
+                            |особенностями, городскими 
+                            |мифами и легендами, в том 
+                            |числе проектируемой территории, 
+                            |чтобы интегрировать их в проект 
+                            |благоустройства!
+        // галерея
+        section.galary.main__galary
+            .container 
+                .galary__wraper
+                    article.galary__title 
+                        h2#galary Галерея
+                    swiper-container.mySwiper.galary__blocks(pagination='true' pagination-clickable='true' space-between='10' slides-per-view='2' pagination-type="fraction")
+                        swiper-slide
+                            img(src="", alt="slide1")
+                        swiper-slide
+                            img(src="", alt="slide2")
+                        swiper-slide
+                            img(src="", alt="slide3")
+                        swiper-slide
+                            img(src="", alt="slide4")
+                        swiper-slide
+                            img(src="", alt="slide5")
+                        swiper-slide
+                            img(src="", alt="slide6")
+                        swiper-slide
+                            img(src="", alt="slide7")
+                        swiper-slide
+                            img(src="", alt="slide8")
+                        swiper-slide
+                            img(src="", alt="slide9")
+        // карта
+        section.map.main__galary
+            .container 
+                .map__wraper 
+                    article.map__title 
+                        h2#map Карта местности
+                    .map__blocks 
+                        .map__block
+                            .item.item1 
+                            .item.item2 
+                            .item.item3 
+                            .item.item4 
+                            .item.item5 
+                            .item.item6 
+                            .item.item7 
+                            .item.item8 
+                            .item.item9 
+                            .item.item10 
+                            .item.item11 
+                        .map__sum 
+                            h3 Сумма
+                            .map__sum-text.sum
+                                div 
+                                    h4 Название - 
+                                        span сумма
+                                div 
+                                    h4 Название - 
+                                        span сумма
+                            hr
+                            .full-sum 
+                                h3 Общая сумма - 
+                                        span 30млн
+                            button.trigger Голосовать
+                            .modal
+                                .modal-content
+                                    span.close-button &times;
+                                    br
+                                    br
+                                    form(action="index.php", method="post")
+                                        div 
+                                            label(for="fio") Введите ФИО :
+                                            input#fio(type="text", name="fio")
+                                        div 
+                                            label(for="date") Дата рождения :
+                                            input#date(type="date", name="date")
+                                        div
+                                            label(for="gen") Пол :
+                                            select#gen(name="gen")
+                                                option(value="m") Муж.  
+                                                option(value="g") Жен.
+                                        div 
+                                            label(for="spec") Специальность :
+                                            input#spec(type="text", name="spec")  
+                                        div 
+                                            button(type="submit") Проголосовать
+                        swiper-container.mySwiper(pagination='true' pagination-clickable='true' slides-per-view='2' space-between='10' pagination-type="fraction")
+                            swiper-slide 
+                                img(src="", alt="")
+                                .text 
+                                    h4 Название - 
+                                        span цена
+                            swiper-slide
+                                img(src="", alt="")
+                                .text 
+                                    h4 Название - 
+                                        span цена
+                            swiper-slide
+                                img(src="", alt="")
+                                .text 
+                                    h4 Название - 
+                                        span цена
+                            swiper-slide
+                                img(src="", alt="")
+                                .text 
+                                    h4 Название - 
+                                        span цена
+                            swiper-slide
+                                img(src="", alt="")
+                                .text 
+                                    h4 Название - 
+                                        span цена
+                            swiper-slide
+                                img(src="", alt="")
+                                .text 
+                                    h4 Название - 
+                                        span цена
+                            swiper-slide
+                                img(src="", alt="")
+                                .text 
+                                    h4 Название - 
+                                        span цена
+                            swiper-slide
+                                img(src="", alt="")
+                                .text 
+                                    h4 Название - 
+                                        span цена
+                            swiper-slide
+                                img(src="", alt="")
+                                .text 
+                                    h4 Название - 
+                                        span цена
+        // отсчет временим до конца голосования
+        section.timer

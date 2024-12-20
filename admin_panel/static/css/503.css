@@ -1,0 +1,83 @@
+@charset "UTF-8";
+/* шрифты */
+@font-face {
+  font-family: "IDBC";
+  src: url("../font/IntroDemo-BlackCAPS.otf");
+}
+@font-face {
+  font-family: "IDCLC";
+  src: url("../font/Arimo-VariableFont_wght.ttf");
+}
+/* базовые настройки */
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+* ::after,
+* ::before {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+* ::-webkit-scrollbar {
+  /* 
+      настройка скроллбара 
+      для других браузеров 
+  */
+  width: 10px;
+}
+* ::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+* ::-webkit-scrollbar-thumb {
+  background-color: #5B9F70;
+  border-radius: 10px;
+  border: 0px none #ffffff;
+}
+
+body {
+  font-family: "IDCLC";
+  font-size: 16px;
+  font-weight: 400;
+}
+body label{
+  font-family: "IDCLC";
+  font-size: 20px;
+  color:#ffffff;
+}
+body a {
+  text-decoration: none;
+}
+body li {
+  list-style: none;
+}
+body h1,
+body h2 {
+  font-family: "IDBC";
+}
+.error{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & .block{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 60px;
+        background-color: #5B9F70;
+        border-radius: 15px;
+        color: #fff;
+
+        & h1{
+            font-size: 120px;
+        }
+        & p{
+            font-size: 28px;
+        }
+    }
+}
