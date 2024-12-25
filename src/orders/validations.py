@@ -3,7 +3,7 @@ from rest_framework import serializers
 from users.models import User, EmailVerify, PasswordReset
 
 # Валидация регистрации
-def custom_validate_register(data):
+def custom_validate_order(data):
     return 
     # email = data.get('email')
     # if not email:

@@ -1,47 +1,4 @@
 {% load static %}
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body>
-    <h1>Login</h1>
-    <form id="login-form">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <br>
-        <button type="submit">Login</button>
-    </form>
-    <p id="message"></p>
-
-    <br><br><br>
-    <h1>reg</h1>
-    <form id="reg-form" method="POST">
-        <label for="email">Email:</label>
-        <input type="email" id="emailreg" name="email" required>
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" id="passwordreg" name="password" required>
-        <br>
-        <label for="password">name:</label>
-        <input type="password" id="name" name="password" required>
-        <br>
-        <label for="password">surname:</label>
-        <input type="password" id="surname" name="password" required>
-        <br>
-        <button type="submit">reg</button>
-    </form>
-    <p id="messagereg"></p>
-
-
-</body>
-</html> -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -75,12 +32,12 @@
                         <a href="{% url 'admin-login' %}">Войти</a>
                         {% endif %}
                     </a>
-                    <a class="check" href="{% url 'admin_main#main' %}">Главная</a>
-                    <a class="check" href="{% url 'admin_main#info-project' %}">О пряниках</a>
-                    <a class="check" href="{% url 'admin_main#info-mesto' %}">Немного истории</a>
-                    <a class="check" href="{% url 'admin_main#galary' %}">Галерея мероприятий</a>
-                    <a class="check" href="{% url 'admin_main#Catalog' %}">Каталог</a>
-                    <a class="check" href="{% url 'admin_main#construct' %}">Конструктор</a>
+                        <a class="check" href="{% url 'admin-main' %}#main">Главная</a>
+                        <a class="check" href="{% url 'admin-main' %}#info-project">О пряниках</a>
+                        <a class="check" href="{% url 'admin-main' %}#info-mesto">Немного истории</a>
+                        <a class="check" href="{% url 'admin-main' %}#galary">Галерея мероприятий</a>
+                        <a class="check" href="{% url 'admin-main' %}#Catalog">Каталог</a>
+                        <a class="check" href="{% url 'admin-main' %}#construct">Конструктор</a>
                 </div>
               </nav>
             </div>

@@ -1,0 +1,44 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        block title
+
+        // CSS
+        block css
+
+        // JS
+        script(src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js')
+        script(src='js/main.js' defer='')
+        script(src='https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js')
+        // Chatra {literal}
+        script.
+            (function(d, w, c) {
+            w.ChatraID = 'HkjoreZ7TDjDoHKoE';
+            var s = d.createElement('script');
+            w[c] = w[c] || function() {
+            (w[c].q = w[c].q || []).push(arguments);
+            };
+            s.async = true;
+            s.src = 'https://call.chatra.io/chatra.js';
+            if (d.head) d.head.appendChild(s);
+            })(document, window, 'Chatra');
+            // /Chatra {/literal}
+
+        // FAVICON
+
+        link(rel='apple-touch-icon' sizes='180x180' href='img/favicon/apple-touch-icon.png')
+        link(rel='icon' type='image/png' sizes='32x32' href='img/favicon/favicon-32x32.png')
+        link(rel='icon' type='image/png' sizes='16x16' href='img/favicon/favicon-16x16.png')
+        link(rel='manifest' href='img/favicon/site.webmanifest')
+    body
+        #app.wraper
+            // header
+            include ../include/header.pug
+            
+            // main
+            block content
+
+            // footer
+            include ../include/footer.pug

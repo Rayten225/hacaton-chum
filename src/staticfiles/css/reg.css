@@ -1,0 +1,69 @@
+/* Основной блок регистрации/авторизации */
+body{
+    background-color: #FCEADD;
+}
+.auth {
+    
+    margin: 100px 0px;
+}
+
+.form-wrapper {
+    background-color: #fff;
+    color: #333;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.form-wrapper h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #6b3c25;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.auth-button {
+    background-color: #6b3c25;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+.form-footer {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.form-footer a {
+    color: #6b3c25;
+    text-decoration: none;
+}

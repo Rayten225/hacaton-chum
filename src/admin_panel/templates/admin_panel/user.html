@@ -30,12 +30,12 @@
                     <a href="{% url 'admin-login' %}">Войти</a>
                     {% endif %}
                 </a>
-                <a class="check" href="#Catalog">Главная</a>
-                <a class="check" href="#Catalog">О пряниках</a>
-                <a class="check" href="#Catalog">Немного истории</a>
-                <a class="check" href="#Catalog">Галерея мероприятий</a>
-                <a class="check" href="#Catalog">Каталог</a>
-                <a class="check" href="#Catalog">Конструктор</a>
+                        <a class="check" href="{% url 'admin-main' %}#main">Главная</a>
+                        <a class="check" href="{% url 'admin-main' %}#info-project">О пряниках</a>
+                        <a class="check" href="{% url 'admin-main' %}#info-mesto">Немного истории</a>
+                        <a class="check" href="{% url 'admin-main' %}#galary">Галерея мероприятий</a>
+                        <a class="check" href="{% url 'admin-main' %}#Catalog">Каталог</a>
+                        <a class="check" href="{% url 'admin-main' %}#construct">Конструктор</a>
             </div>
           </nav>
         </div>

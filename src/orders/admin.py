@@ -4,8 +4,9 @@ from django.contrib.admin import ModelAdmin
 
 @admin.register(Order)
 class ProductAdmin(ModelAdmin):
-    list_display = ('FIO','number', 'order', 'deadline', 'organization','price','address','email')
+    list_display = ('FIO','number', 'deadline', 'organization','price','address','email')
     fieldsets = (
-        ('Client info', {'fields': ('FIO','number', 'order', 'deadline', 'organization','price','address','email')}),
+        ('Client info', dict(
+            fields=('FIO', 'number', 'formatted_order_items', 'deadline', 'organization', 'price', 'address', 'email'))),
     )
-    readonly_fields = ('FIO','number', 'order', 'organization','price','address','email')
+    readonly_fields = ('FIO','number', 'formatted_order_items', 'organization','price','address','email')
